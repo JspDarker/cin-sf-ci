@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <base href="<?= base_url() ?>">
+    <base href="<?=base_url()?>">
     <title>@Symfony</title>
     <link rel="shortcut icon" href="public/images/sf.png">
     <link rel="stylesheet" href="public/css/bootstrap.css">
@@ -55,34 +55,6 @@
 </footer>
 <script src="public/js/jquery-3.3.1.js"></script>
 <script src="public/js/jq-valid-core.js"></script>
-<script>
-    $(function () {
-        $('#loginForm').validate({
-            rules: {
-                //name: "required",
-                email: {
-                    required: true,
-                    email: true
-                }
-            },
-            messages: {
-                //name: "Please specify your name",
-                email: {
-                    required: "We need your email address to contact you",
-                    email: "Your email address must be in the format of name@domain.com"
-                }
-            },
-            errorPlacement: function(error, element) {
-                error.appendTo('#allError');
-            },
-            highlight: function (element, errorClass) {
-                $('#allError').addClass('alert');
-            },
-            unhighlight: function (element, errorClass) {
-                $('#allError').removeClass('alert');
-            },
-        });
-    });
-</script>
+
 </body>
 </html>
