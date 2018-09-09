@@ -546,7 +546,7 @@ class CI_Form_validation {
 		}
 
 		//return array_merge($callbacks, $new_rules); // TODO: change here
-		return array_merge($new_rules,$callbacks); // TODO: change here
+		return array_merge($new_rules,$callbacks); // TODO: change here 111
 	}
 
 	// --------------------------------------------------------------------
