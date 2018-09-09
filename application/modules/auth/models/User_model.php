@@ -9,6 +9,22 @@
 class User_model extends CI_Model
 {
 
+    public function authenticate($email, $pass=1)
+    {
+        //from email get password or users
+        $query = $this->db->select('id,name,email,password')
+            ->from('fs_user')
+            ->where(array('email'=>$email));
+        $password = $query->get()->row_array();
+        //return $password;
+        if(password_verify($pass,$password['password']) !== true){
+            return false;
+        } else {
+            return $password;
+        }
+
+    }
+
 
     public function check_mail($email)
     {
@@ -26,6 +42,8 @@ class User_model extends CI_Model
             );
         }
     }
+
+
 
     public function check_pass($email,$pass)
     {

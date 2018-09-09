@@ -4,19 +4,56 @@ class Users extends MY_Controller
 {
 
     private $_uploaded;
+    private $_email;
+
+
     public function __construct()
     {
         parent::__construct();
         $this->load->helper('form');
+        // load form_validation library
+        $this->load->library('form_validation');
         $this->load->helper('captcha');
         $this->load->model('user_model');
     }
+
+//    public function login()
+//    {
+//        $data['subview'] = 'login';
+//
+//        if($this->input->post('user_login') !== null) {
+//            // set rule
+//            $this->form_validation->set_rules('email','email','required|valid_email');
+//            $this->form_validation->set_rules('pass','password','required|callback_check_authenticate');
+//            if($this->form_validation->run() === false) {
+//                $this->load->view('layouts/master',compact('data'));
+//            } else {
+//                dd('login success !');
+//            }
+//        } else {
+//            $this->load->view('layouts/master',compact('data'));
+//        }
+//    }
+
+    public function check_authenticate()
+    {
+        $email = $this->input->post('email',true);
+        $pass = $this->input->post('pass',true);
+        $result = $this->user_model->authenticate($email,$pass);
+        if ($result === false) {
+            $this->form_validation->set_message('check_authenticate','email or password wrong');
+            return false;
+        } else return true;
+    }
+
+
     public function login()
     {
         if($this->session->has_userdata('user_id')) {
             redirect('auth/users/tam');
         }
         $data['subview'] = 'login';
+        //dd($data);
         if($this->input->post('email') !== null) {
             $this->form_validation->set_rules('email','email','required|callback_check_mail_exists');
             $this->form_validation->set_rules('pass','password','required|callback_check_pass'); // |callback_check_pass
@@ -86,7 +123,7 @@ class Users extends MY_Controller
         if($found === false) {
             $this->form_validation->set_message('check_mail_exists','wrong email or pass');
             return false;
-        } else{
+        } else {
             return true;
         }
     }

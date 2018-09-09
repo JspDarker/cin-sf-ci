@@ -10,12 +10,12 @@
             </div>
 
             <div class="form-label-group">
-                <input value="<?=set_value('email')?>" name="email" type="text" id="inputEmail" class="form-control" placeholder="Email address">
+                <input value="<?=set_value('email')?>" name="email" type="text" id="inputEmail" class="form-control" placeholder="Email address" autofocus>
                 <label for="inputEmail">Email address</label>
             </div>
 
             <div class="form-label-group">
-                <input name="pass" type="password" id="inputPassword" class="form-control" placeholder="Password" autofocus>
+                <input name="pass" type="password" id="inputPassword" class="form-control" placeholder="Password">
                 <label for="inputPassword">Password</label>
             </div>
 
@@ -24,7 +24,7 @@
                     <input type="checkbox" value="remember-me"> Remember me <?=$this->session->userdata('user_name')?>
                 </label>
             </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <button name="user_login" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
             <p class="mt-5 mb-3 text-muted text-center">&copy; 2017-2018</p>
         </form>
     </div>
