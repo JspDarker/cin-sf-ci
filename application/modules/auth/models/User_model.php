@@ -11,16 +11,18 @@ class User_model extends CI_Model
 
     public function authenticate($email, $pass=1)
     {
-        //from email get password or users
+        //from email get info user
         $query = $this->db->select('id,name,email,password')
             ->from('fs_user')
             ->where(array('email'=>$email));
-        $password = $query->get()->row_array();
+        $user = $query->get()->row_array();
         //return $password;
-        if(password_verify($pass,$password['password']) !== true){
+        if(password_verify($pass,$user['password']) !== true){
             return false;
         } else {
-            return $password;
+            $this->session->set_userdata('user_id',$user['id']);
+            $this->session->set_userdata('user_name',$user['name']);
+            return $user;
         }
 
     }
