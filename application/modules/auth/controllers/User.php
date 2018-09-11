@@ -24,7 +24,7 @@ class User extends MY_Controller
 
         if($this->input->post() !== null) {
             // set rule
-            $this->form_validation->set_rules('email','email','required');
+            $this->form_validation->set_rules('email','email','required|valid_email');
             $this->form_validation->set_rules('pass','password','required|callback_check_authenticate');
                 //captcha extension
             /**
