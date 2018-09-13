@@ -2,7 +2,7 @@
 
 application/cache/*
 !application/cache/index.html
-
+application/helpers/
 application/logs/*
 !application/logs/index.html
 
