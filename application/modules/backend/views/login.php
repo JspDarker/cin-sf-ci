@@ -1,4 +1,7 @@
 <div class="wrapper-login">
+    <div class="form-group ">
+        <span class="text-warning"><span class="text-danger">Message for Account</span> | <?=$this->session->flashdata('message_login');?></span>
+    </div>
     <?=form_open()?>
         <div class="form-row">
             <div class="form-group col-md-6">
@@ -19,10 +22,11 @@
 
         <div class="form-group">
             <div class="custom-control custom-checkbox mr-sm-2">
-                <input class="custom-control-input" type="checkbox" id="customControlAutosizing">
+                <input class="custom-control-input" <?=set_checkbox('checkbox',1)?> type="checkbox" name="checkbox" value="1" id="customControlAutosizing">
                 <label class="custom-control-label" for="customControlAutosizing">
                     Check me out
                 </label>
+                <span class="text-warning"><?=form_error('checkbox'); ?></span>
             </div>
         </div>
         <button name="login_button" type="submit" class="btn btn-primary">Sign in</button>

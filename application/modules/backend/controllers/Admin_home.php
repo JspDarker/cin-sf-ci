@@ -14,6 +14,9 @@ class Admin_home extends MY_Controller
 
     public function index()
     {
+        if ( ! $this->session->has_userdata('author')) {
+            redirect('/');
+        }
         $data['subview']= 'home';
         $data['title']= 'PagesHome';
         $this->load->view('master',array('data'=>$data));

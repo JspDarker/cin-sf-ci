@@ -17,11 +17,16 @@ class Authenticate extends MY_Controller
         parent::__construct();
         $this->load->helper('form');
         $this->load->model('admin_model');
+        /**
+         * email::required|
+         * password:: required|callback_is_authorize()
+         */
     }
 
     public function login()
     {
         $data['subview']= 'login';
+        $data['title']= 'Login';
 
         if($this->input->post('login_button') !== null){
             $data['form_data']=$this->input->post();
@@ -29,6 +34,8 @@ class Authenticate extends MY_Controller
             $this->_password = $data['form_data']['pass'];
             $this->form_validation->set_rules('email','email','required|valid_email|callback_check_email');
             $this->form_validation->set_rules('pass','password','required|callback_check_auth_login');
+
+
             if($this->form_validation->run() !== true) {
                 $this->load->view('master',array('data'=>$data));
             } else { // valid
@@ -66,4 +73,5 @@ class Authenticate extends MY_Controller
             }
         }
     }
+
 }
