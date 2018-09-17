@@ -21,4 +21,11 @@ class Admin_home extends MY_Controller
         $data['title']= 'PagesHome';
         $this->load->view('master',array('data'=>$data));
     }
+
+    public function review($name='Tien Khung')
+    {
+        $names = $name;
+
+        $this->load->view('layouts/review',array('name'=>$names));
+    }
 }

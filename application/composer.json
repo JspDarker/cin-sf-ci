@@ -1,3 +1,7 @@
 {
-
+    "name":"Thanh Storm",
+    "description": "This is desc",
+    "require-dev": {
+        "squizlabs/php_codesniffer": "3.*"
+    }
 }
